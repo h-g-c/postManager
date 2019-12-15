@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="postoffice.demo.dao.OrderDao">
+    <resultMap id="result" type="postoffice.demo.entity.Order">
+        <id property="id" column="order_id"/>
+        <result property="newspaperId" column="newspaper_id"/>
+        <result property="customerName" column="customer_name"/>
+        <result property="totalMoney" column="total_sum"/>
+        <result property="goodsNumber" column="goods_number"/>
+        <result property="isOver" column="isover"/>
+        <result property="userName" column="user_name"/>
+        <result property="receivingAddress" column="customer_address"/>
+        <result property="customerPhoneNumber" column="customer_phone_number"/>
+     </resultMap>
+<!--    select  newspaper_id newspaperId ,sum(goods_number) totalnumber, sum(total_sum) totalMoney-->
+<!--    from `order`-->
+<!--    group by newspaper_id-->
+<!--  <resultMap id="saleMap" type="map">-->
+<!--      <result property="" column="newsPaper"/>-->
+<!--  </resultMap>-->
+    <insert id="insert" parameterType="postoffice.demo.entity.Order">
+        insert into
+        `order`(newspaper_id,customer_name,total_sum, goods_number, user_name, receiving_address, customer_phone_number, isover)
+        values (#{newspaperId},#{customerName},#{totalMoney},#{goodsNumber},#{userName},#{receivingAddress},#{customerPhoneNumber},#{isOver})
+    </insert>
+    <update id="update">
+        update `order`
+        set newspaper_id=#{newspaperId},
+        customer_name=#{customerName},
+        total_sum=#{totalMoney},
+        goods_number=#{goodsNumber},
+        user_name=#{userName},
+        receiving_address=#{receivingAddress},
+        customer_phone_number=#{customerPhoneNumber},
+        isover=#{isOver}
+        where order_id=#{id}
+    </update>
+    <update id="setOrderIsOver">
+        update `order`
+        set isover=true
+        where order_id=#{orderId}
+    </update>
+    <delete id="deleteById">
+        delete from
+        `order` where
+        order_id=#{id}
+    </delete>
+    <select id="getAll" resultMap="result">
+    select *
+    from `order`
+    </select>
+    <select id="selectByNewspaperId" resultMap="result">
+        select *
+        from `order`
+        where newspaper_id=#{id}
+    </select>
+    <select id="getNewspaperTotalMoneyAndTotalNumber" resultType="map">
+        select  newspaper_id newspaperId ,sum(goods_number) totalnumber, sum(total_sum) totalMoney
+        from `order`
+        group by newspaper_id
+    </select>
+    <select id="selectByUserName" resultMap="result">
+        select *
+        from `order`
+        where user_name=#{userName}
+    </select>
+</mapper>

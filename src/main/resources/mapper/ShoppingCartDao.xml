@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="postoffice.demo.dao.ShoppingCartDao">
+  <resultMap id="result" type="postoffice.demo.entity.ShoppingCart">
+      <id property="id" column="cart_id"/>
+      <result property="userName" column="user_name"/>
+      <result property="newspaperId" column="newspaper_id"/>
+      <result property="number" column="goods_number"/>
+      <result property="price" column="newspaper_price"/>
+      <result property="totalMoney" column="total_sum"/>
+  </resultMap>
+    <update id="update">
+        update shoppingcart
+        set newspaper_id=#{newspaperId},
+         goods_number=#{number},
+         total_sum=#{totalNumber},
+         newspaper_price=#{price}
+         where user_name=#{userName}
+    </update>
+    <update id="changeGoodsNumber">
+        update shoppingcart
+        set
+         goods_number=#{number},
+         total_sum=#{totalMoney}
+         where user_name=#{userName} and newspaper_id=#{newspaperId}
+    </update>
+
+    <delete id="delete">
+        delete from
+        shoppingcart
+        where newspaper_id=#{newspaperId} and user_name=#{userName}
+    </delete>
+    <select id="getByUserName" resultMap="result">
+        select *
+        from shoppingcart
+        where user_name=#{userName}
+    </select>
+    <select id="getByUserNameAndNewspaperId" resultMap="result">
+        select *from
+        shoppingcart
+        where newspaper_id=#{newspaperId} and user_name=#{userName}
+    </select>
+
+
+    <insert id="addGoods" parameterType="postoffice.demo.entity.ShoppingCart">
+        insert into
+        shoppingcart(newspaper_id, goods_number, total_sum, newspaper_price, user_name)
+        values (#{newspaperId},#{number},#{totalMoney},#{price},#{userName})
+    </insert>
+
+</mapper>

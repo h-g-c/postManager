@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="postoffice.demo.dao.CustomerDao">
+    <resultMap id="result" type="postoffice.demo.entity.Customer">
+        <result property="reallyName" column="customer_name"/>
+        <result property="sex" column="sex"/>
+        <result property="password" column="user_password"/>
+        <result property="age" column="age"/>
+        <result property="userName" column="user_name"/>
+        <result property="userAddress" column="user_address"/>
+        <result property="phoneNumber" column="phone_number"/>
+    </resultMap>
+
+    <select id="getAll" resultMap="result">
+        SELECT *
+        FROM customer
+    </select>
+
+
+    <select id="isExistUser"  resultMap="result" >
+  select * from customer
+  where user_name=#{userName}
+    </select>
+
+
+    <select id="getPasswordByUserName" resultType="string">
+        SELECT user_password
+        FROM customer
+        WHERE user_name=#{userName}
+    </select>
+
+
+    <select id="getInformationByUserName" resultMap="result">
+        SELECT *
+        FROM customer
+        WHERE user_name=#{userName}
+    </select>
+
+    <insert id="insert" parameterType="postoffice.demo.entity.Customer">
+        insert into
+        customer(user_name, customer_name, age, sex, user_password,phone_number,user_address)
+        values
+         (#{userName},#{reallyName},#{age},#{sex},#{password},#{phoneNumber},#{userAddress})
+    </insert>
+
+
+    <delete id="deleteByUserName" >
+        delete from
+        customer
+        where user_name=#{userName}
+    </delete>
+
+    <update id="updateByUserName" parameterType="postoffice.demo.entity.Customer">
+    update customer set customer_name=#{reallyName},
+    age=#{age},
+    sex=#{sex},
+    user_password=#{password},
+    user_address=#{userAddress},
+    phone_number=#{phoneNumber}
+    where user_name=#{userName}
+    </update>
+</mapper>

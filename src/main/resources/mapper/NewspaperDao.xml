@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="postoffice.demo.dao.NewspaperDao">
+    <resultMap id="result" type="postoffice.demo.entity.Newspaper">
+        <result property="id" column="newspaper_id"/>
+        <result property="categories" column="categories"/>
+        <result property="price" column="price"/>
+        <result property="name" column="newspaper_name"/>
+        <result property="represent" column="newspaper_represent"/>
+        <result property="postalCode" column="postalcode"/>
+        <result property="pressId" column="press_id"/>
+        <result property="number" column="newspaper_number"/>
+     </resultMap>
+    <select id="getAll" resultMap="result">
+        select *
+        from newspaper
+    </select>
+ <select id="selectByCategoriesOrNameOrPostalId" resultMap="result">
+     select *
+     from newspaper
+     where (categories=#{value} or postalcode=#{value} or newspaper_name like CONCAT('%',#{value},'%'))
+ </select>
+    <insert id="insert" parameterType="postoffice.demo.entity.Newspaper">
+        insert into
+        newspaper( categories, price, newspaper_name, newspaper_represent, press_id, postalcode,newspaper_number)
+        values (#{categories},#{price},#{name},#{represent},#{pressId},#{postalCode},#{number})
+    </insert>
+
+    <delete id="deleteById" >
+        delete from newspaper
+        where newspaper_id=#{id}
+    </delete>
+
+    <update id="update" parameterType="postoffice.demo.entity.Newspaper">
+        update newspaper
+        set categories=#{categories},
+        price=#{price},
+        newspaper_name=#{name},
+        newspaper_represent=#{represent},
+        press_id=#{pressId},
+        postalcode=#{postalCode},
+        newspaper_number=#{number}
+        where newspaper_id=#{id}
+    </update>
+    <select id="getById" resultMap="result" >
+        select *
+        from newspaper
+        where newspaper_id=#{id}
+    </select>
+</mapper>
