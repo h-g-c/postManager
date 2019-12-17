@@ -12,8 +12,6 @@ import postoffice.demo.result.ResultMap;
 import postoffice.demo.service.OrderService;
 import postoffice.demo.service.ShoppingCartService;
 
-import java.util.Map;
-
 @Service
 public class shoppingCartServiceImpl implements ShoppingCartService {
     @Autowired

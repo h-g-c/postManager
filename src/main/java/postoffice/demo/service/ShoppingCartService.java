@@ -3,7 +3,6 @@ package postoffice.demo.service;
 import postoffice.demo.entity.ShoppingCart;
 import postoffice.demo.result.ResultMap;
 
-import java.util.Map;
 
 public interface ShoppingCartService {
     ResultMap getMyCart(String userName);
