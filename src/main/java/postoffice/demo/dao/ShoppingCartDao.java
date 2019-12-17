@@ -1,5 +1,7 @@
 package postoffice.demo.dao;
 
+import postoffice.demo.entity.Customer;
+import postoffice.demo.entity.Newspaper;
 import postoffice.demo.entity.ShoppingCart;
 
 import java.util.List;
@@ -13,5 +15,7 @@ public interface ShoppingCartDao {
     int changeGoodsNumber(Map<String ,Object> map);
     int delete(String userName,Integer newspaperId);
     ShoppingCart getByUserNameAndNewspaperId(int newspaperId, String userName);
+    int updateByNewspaperId(Newspaper newspaper);
+    int deleteByNewspaperId(int id);
 
 }

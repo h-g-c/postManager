@@ -46,7 +46,7 @@ public ResultMap delete(Integer newspaperId)
 //    return newspaperService.search(map.get("value").toString());
 //    }
 @ApiOperation(value = "可以通过报纸的代发编号(精确)或者报纸的名字(模糊)或者报纸的分类(精确),对报纸进行查找",notes = "成功返回0,失败返回-1")
-@PostMapping("/sort")
+@PostMapping("/search")
 public ResultMap sort(String value)
 { if(value==null)
     return ResultMap.errno(-1,"Cannot get value");

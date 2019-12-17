@@ -42,6 +42,14 @@
         set isover=true
         where order_id=#{orderId}
     </update>
+    <update id="updateByUserName" parameterType="postoffice.demo.entity.Customer">
+        update `order`
+        set
+        customer_name=#{reallyName},
+        customer_phone_number=#{phoneNumber},
+        receiving_address=#{userAddress}
+        where user_name=#{userName}
+    </update>
     <delete id="deleteById">
         delete from
         `order` where

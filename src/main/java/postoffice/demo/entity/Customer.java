@@ -10,6 +10,18 @@ public class Customer {
     String userAddress;
     String phoneNumber;
 
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
+
+    boolean admin;
+
+
+
     public String getPhoneNumber() {
         return phoneNumber;
     }

@@ -49,4 +49,9 @@
         from newspaper
         where newspaper_id=#{id}
     </select>
+    <select id="getByPressId" resultType="postoffice.demo.entity.Newspaper">
+        select *
+        from newspaper
+        where press_id=#{pressId}
+    </select>
 </mapper>

@@ -90,7 +90,7 @@ public class shoppingCartServiceImpl implements ShoppingCartService {
             ShoppingCart cart = cartManager.getByUserNameAndNewspaperId(newspaperId,userName);
             Newspaper newspaper=newspaperManager.getById(newspaperId);
             if (cart == null||newspaper==null)
-                return ResultMap.errno(-1, "userName or newspaperId not exit");
+                return ResultMap.errno(-1, "generateOrder error,userName or newspaperId not exit");
             if(cart.getNumber()>newspaper.getNumber())
                 return ResultMap.errno(-1,"newspaper number not enough");
             newspaper.setNumber(newspaper.getNumber()-cart.getNumber());

@@ -27,10 +27,21 @@
          where user_name=#{userName} and newspaper_id=#{newspaperId}
     </update>
 
+    <update id="updateByNewspaperId" parameterType="postoffice.demo.entity.Newspaper">
+         update shoppingcart
+         set
+         total_sum=#{price}*goods_number
+         where  newspaper_id=#{id}
+    </update>
+
     <delete id="delete">
         delete from
         shoppingcart
         where newspaper_id=#{newspaperId} and user_name=#{userName}
+    </delete>
+    <delete id="deleteByNewspaperId" >
+        delete from shoppingcart
+        where newspaper_id=#{id}
     </delete>
     <select id="getByUserName" resultMap="result">
         select *

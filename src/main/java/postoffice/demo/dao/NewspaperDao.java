@@ -12,4 +12,5 @@ public interface NewspaperDao {
     int  update(Newspaper newspaper);
     int  deleteById(int id);
     Newspaper getById(int id);
+  List<Newspaper> getByPressId(int pressId);
 }

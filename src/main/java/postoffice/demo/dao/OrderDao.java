@@ -1,5 +1,6 @@
 package postoffice.demo.dao;
 
+import postoffice.demo.entity.Customer;
 import postoffice.demo.entity.Order;
 
 import java.util.List;
@@ -22,4 +23,6 @@ public interface OrderDao {
     List<Order> selectByUserName(String userName);
 
     int setOrderIsOver(int orderId);
+
+    int updateByUserName(Customer user);
 }

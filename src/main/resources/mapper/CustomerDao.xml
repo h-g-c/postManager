@@ -11,6 +11,7 @@
         <result property="userName" column="user_name"/>
         <result property="userAddress" column="user_address"/>
         <result property="phoneNumber" column="phone_number"/>
+        <result property="admin" column="user_admin"/>
     </resultMap>
 
     <select id="getAll" resultMap="result">
@@ -40,9 +41,9 @@
 
     <insert id="insert" parameterType="postoffice.demo.entity.Customer">
         insert into
-        customer(user_name, customer_name, age, sex, user_password,phone_number,user_address)
+        customer(user_name, customer_name, age, sex, user_password,phone_number,user_address,user_admin)
         values
-         (#{userName},#{reallyName},#{age},#{sex},#{password},#{phoneNumber},#{userAddress})
+         (#{userName},#{reallyName},#{age},#{sex},#{password},#{phoneNumber},#{userAddress},#{admin})
     </insert>
 
 
@@ -58,7 +59,8 @@
     sex=#{sex},
     user_password=#{password},
     user_address=#{userAddress},
-    phone_number=#{phoneNumber}
+    phone_number=#{phoneNumber},
+    user_admin=#{admin}
     where user_name=#{userName}
     </update>
 </mapper>
