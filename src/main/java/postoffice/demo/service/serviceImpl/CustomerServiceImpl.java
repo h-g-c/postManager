@@ -6,8 +6,7 @@ import postoffice.demo.dao.CustomerDao;
 import postoffice.demo.dao.OrderDao;
 import postoffice.demo.dao.ShoppingCartDao;
 import postoffice.demo.entity.Customer;
-import postoffice.demo.entity.Order;
-import postoffice.demo.result.ResultMap;
+import postoffice.demo.util.ResultMap;
 import postoffice.demo.service.CustomerService;
 
 @Service

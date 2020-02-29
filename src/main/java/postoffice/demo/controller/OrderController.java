@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import postoffice.demo.entity.Order;
-import postoffice.demo.result.ResultMap;
+import postoffice.demo.util.ResultMap;
 import postoffice.demo.service.OrderService;
 
 @RestController

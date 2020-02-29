@@ -6,10 +6,9 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import postoffice.demo.entity.Newspaper;
-import postoffice.demo.result.ResultMap;
+import postoffice.demo.util.ResultMap;
 import postoffice.demo.service.NewspaperService;
 
-import java.util.Map;
 @RestController
 @RequestMapping(value = "/postoffice/newspaper",method = RequestMethod.POST)
 @Api(value = "进行报纸的展示以及报纸信息的修改")

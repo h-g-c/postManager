@@ -7,7 +7,7 @@ import postoffice.demo.dao.OrderDao;
 import postoffice.demo.dao.PressDao;
 import postoffice.demo.dao.ShoppingCartDao;
 import postoffice.demo.entity.Newspaper;
-import postoffice.demo.result.ResultMap;
+import postoffice.demo.util.ResultMap;
 import postoffice.demo.service.NewspaperService;
 @Service
 public class newspaperServiceImpl implements NewspaperService {

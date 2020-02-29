@@ -1,7 +1,7 @@
 package postoffice.demo.service;
 
 import postoffice.demo.entity.Press;
-import postoffice.demo.result.ResultMap;
+import postoffice.demo.util.ResultMap;
 
 public interface PressService {
     ResultMap getAll();

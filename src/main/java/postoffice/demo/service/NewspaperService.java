@@ -1,7 +1,7 @@
 package postoffice.demo.service;
 
 import postoffice.demo.entity.Newspaper;
-import postoffice.demo.result.ResultMap;
+import postoffice.demo.util.ResultMap;
 
 public interface NewspaperService {
     ResultMap getAll();

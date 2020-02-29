@@ -1,6 +1,9 @@
 package postoffice.demo.entity;
 
 
+import lombok.Data;
+
+@Data
 public class Customer {
     String userName;
     String reallyName;
@@ -9,27 +12,7 @@ public class Customer {
     String password;
     String userAddress;
     String phoneNumber;
-
-    public boolean isAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(boolean admin) {
-        this.admin = admin;
-    }
-
     boolean admin;
-
-
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
     Customer() {
         age = 0;
         reallyName = "";
@@ -38,54 +21,4 @@ public class Customer {
         password = "";
         userAddress = "";
     }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getReallyName() {
-        return reallyName;
-    }
-
-    public void setReallyName(String reallyName) {
-        this.reallyName = reallyName;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getUserAddress() {
-        return userAddress;
-    }
-
-    public void setUserAddress(String userAddress) {
-        this.userAddress = userAddress;
-    }
-
-
 }

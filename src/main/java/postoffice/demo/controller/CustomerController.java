@@ -3,10 +3,8 @@ import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import postoffice.demo.entity.Customer;
-import postoffice.demo.result.ResultMap;
+import postoffice.demo.util.ResultMap;
 import postoffice.demo.service.CustomerService;
-
-import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/postoffice/user" ,method = RequestMethod.POST)

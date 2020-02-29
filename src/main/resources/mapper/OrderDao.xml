@@ -9,7 +9,7 @@
         <result property="customerName" column="customer_name"/>
         <result property="totalMoney" column="total_sum"/>
         <result property="goodsNumber" column="goods_number"/>
-        <result property="isOver" column="isover"/>
+        <result property="over" column="isover"/>
         <result property="userName" column="user_name"/>
         <result property="receivingAddress" column="customer_address"/>
         <result property="customerPhoneNumber" column="customer_phone_number"/>

@@ -1,7 +1,7 @@
 package postoffice.demo.service;
 
 import postoffice.demo.entity.Customer;
-import postoffice.demo.result.ResultMap;
+import postoffice.demo.util.ResultMap;
 
 
 public interface CustomerService {

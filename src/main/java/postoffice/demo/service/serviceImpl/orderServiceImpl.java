@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import postoffice.demo.dao.OrderDao;
 import postoffice.demo.entity.Order;
-import postoffice.demo.result.ResultMap;
+import postoffice.demo.util.ResultMap;
 import postoffice.demo.service.OrderService;
 
 import java.util.List;

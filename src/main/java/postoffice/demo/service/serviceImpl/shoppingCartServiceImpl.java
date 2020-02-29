@@ -8,7 +8,7 @@ import postoffice.demo.dao.ShoppingCartDao;
 import postoffice.demo.entity.Newspaper;
 import postoffice.demo.entity.Order;
 import postoffice.demo.entity.ShoppingCart;
-import postoffice.demo.result.ResultMap;
+import postoffice.demo.util.ResultMap;
 import postoffice.demo.service.OrderService;
 import postoffice.demo.service.ShoppingCartService;
 

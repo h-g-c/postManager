@@ -3,14 +3,11 @@ package postoffice.demo.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import postoffice.demo.entity.Press;
-import postoffice.demo.result.ResultMap;
+import postoffice.demo.util.ResultMap;
 import postoffice.demo.service.PressService;
-
-import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/postoffice/press", method = RequestMethod.POST)

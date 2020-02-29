@@ -1,4 +1,4 @@
-package postoffice.demo.result;
+package postoffice.demo.util;
 
 import java.util.HashMap;
 

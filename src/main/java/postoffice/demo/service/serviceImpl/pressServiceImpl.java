@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import postoffice.demo.dao.NewspaperDao;
 import postoffice.demo.dao.PressDao;
 import postoffice.demo.entity.Press;
-import postoffice.demo.result.ResultMap;
+import postoffice.demo.util.ResultMap;
 import postoffice.demo.service.PressService;
 
 @Service
