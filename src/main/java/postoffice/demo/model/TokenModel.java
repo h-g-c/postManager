@@ -3,31 +3,32 @@ package postoffice.demo.model;
 import java.util.UUID;
 
 public class TokenModel {
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     // 用户ID
-    private long userId;
+    private String  userName;
     // 随机生成的uuid
     private String token;
 
     public TokenModel () {
 
     }
-    public TokenModel(long userId, String roleInt, String flag) {
-        this.userId = userId;
-        this.token = UUID.randomUUID().toString() + ":" + roleInt + ":" + flag;
+    public TokenModel(String userName) {
+        this.userName = userName;
+        this.token = UUID.randomUUID().toString() + ":" + System.currentTimeMillis();
     }
 
-    public TokenModel(Long userId, String token) {
-        this.userId = userId;
+    public TokenModel(String userName, String token) {
+        this.userName=userName;
         this.token = token;
     }
 
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
 
     public String getToken() {
         return token;
@@ -40,7 +41,7 @@ public class TokenModel {
     @Override
     public String toString() {
         return "TokenModel{" +
-                "userId=" + userId +
+                "userName=" + userName +
                 ", token='" + token + '\'' +
                 '}';
     }

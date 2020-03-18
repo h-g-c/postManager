@@ -22,12 +22,12 @@ public class TokenManagerRealization implements TokenManager{
             return null;
         }
         String[] param = authentication.split(":");
-        if (param.length != 4) {
+        if (param.length != 3) {
             return null;
         }
         // 使用userID和源token简单拼接成的token, 可以增加加密措施
-        long userId = Long.parseLong(param[0]);
-        return new TokenModel(userId, param[1] + ":" + param[2] + ":" + param[3]);
+       String userName=param[0];
+        return new TokenModel(userName, param[1] + ":" + param[2] );
     }
 
     /**

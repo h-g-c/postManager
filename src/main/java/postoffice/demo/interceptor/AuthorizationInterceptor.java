@@ -66,16 +66,15 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
         }
 
         // @todo: redis 放入的格式  <18-01-20> //
-        if (JedisUtil.getValue(String.valueOf(model.getUserId())) == null) {
-            logger.info("first false {}", JedisUtil.getValue(String.valueOf(model.getUserId())));
+        if (JedisUtil.getValue(model.getUserName()) == null) {
             response.setStatus(401);
             return false;
         } else {
-            String value = JedisUtil.getValue(String.valueOf(model.getUserId()));
+            String value = JedisUtil.getValue(model.getUserName());
             if (value != null) {
                 if (!value.equals(model.getToken())) {
-                    logger.info("second false {}", JedisUtil.getValue(String.valueOf(model.getUserId())));
-                    System.out.println(JedisUtil.getValue(String.valueOf(model.getUserId())));
+                    logger.info("second false {}", JedisUtil.getValue(model.getUserName()));
+                    System.out.println(JedisUtil.getValue(model.getUserName()));
                     System.out.println(model.getToken());
                     System.out.println("second false");
                     response.setStatus(401);
@@ -85,7 +84,7 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
                 return false;
             }
         }
-        JedisUtil.doExpire(String.valueOf(model.getUserId()));
+        JedisUtil.doExpire(String.valueOf(model.getUserName()));
         return true;
     }
 }

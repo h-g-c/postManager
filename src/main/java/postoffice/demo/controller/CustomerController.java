@@ -3,8 +3,16 @@ import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import postoffice.demo.entity.Customer;
+import postoffice.demo.model.LoginRequest;
+import postoffice.demo.model.TokenModel;
+import postoffice.demo.util.JedisUtil;
+import postoffice.demo.util.Response;
+import postoffice.demo.util.Responses;
 import postoffice.demo.util.ResultMap;
 import postoffice.demo.service.CustomerService;
+
+import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 
 @RestController
 @RequestMapping(value = "/postoffice/user" ,method = RequestMethod.POST)
@@ -46,13 +54,7 @@ public class CustomerController {
 //    return customerService.signIn(map.get("userName").toString(),map.get("password").toString());
 //    }
 
-    @ApiOperation(value = "用于登录验证",notes = "成功返回0,失败返回-1")
-    @PostMapping("/loginIn")
-    public ResultMap check(String userName,String password)
-    {if(userName==null||password==null)
-        return ResultMap.errno(-1,"Cannot get value");
-        return customerService.signIn(userName,password);
-    }
+
 
 //    @ApiOperation(value = "通过userName删除某用户的信息",notes = "成功返回0,失败返回-1")
 //    @PostMapping(value = "/deleteByUserName" ,produces = "application/json")
@@ -74,6 +76,35 @@ public ResultMap delete(String userName) {
     @PostMapping(value = "/update" ,produces = "application/json")
     public ResultMap update(@RequestBody Customer user) {
         return customerService.update(user);
+    }
+
+
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public Response loginResult(@RequestBody LoginRequest loginRequest, HttpServletResponse httpServletResponse){
+        String username = loginRequest.getUserName();
+        String password = loginRequest.getPassword();
+        System.out.println(username);
+        System.out.println(password);
+            // 验证密码信息, 忽略CASE OR case
+            if (customerService.signIn(username,password)) {
+                Response response = Responses.successResponse();
+                HashMap<String, Object> data = new HashMap<>();
+                data.put("successMessage", "登录成功!");
+
+                response.setData(data);
+                TokenModel tokenModel = new TokenModel(username);
+                JedisUtil.setValue(tokenModel.getUserName(), tokenModel.getToken());
+                httpServletResponse.setHeader("Authorization", tokenModel.getUserName() + ":" + tokenModel.getToken());
+                return response;
+            } else {
+                Response response = Responses.errorResponse("用户名或者密码错误");
+                HashMap<String, Object> data = new HashMap<>();
+                data.put("失败", "用户名或者密码错误！");
+                response.setData(data);
+                return response;
+            }
+
     }
 
 

@@ -57,10 +57,10 @@ try{
     }
 
     @Override
-    public ResultMap signIn(String userName, String password) {
+    public boolean signIn(String userName, String password) {
         if (password.equals(customerManager.getPasswordByUserName(userName)))
-            return ResultMap.errno(0, "loginIn success");
-        else return ResultMap.errno(-1, "Wrong account or password");
+            return true;
+        else return false;
     }
 
     @Override

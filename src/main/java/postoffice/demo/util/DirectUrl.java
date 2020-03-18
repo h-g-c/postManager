@@ -6,8 +6,7 @@ import java.util.regex.Pattern;
 public class DirectUrl {
 
     private  static  String[] urls = {
-      "/postoffice/newspaper/getAll",
-            "/postoffice/order/getAll"
+      "/postoffice/user/login"
     };
     public static boolean isDirect(String url){
         System.out.println("DirectUrl:" + url);
